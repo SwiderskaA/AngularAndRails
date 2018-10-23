@@ -9,3 +9,11 @@ Book.create!([
   { name: 'Copying and Pasting from Stack Overflow' },
   { name: 'Trying Stuff Until it Works' }
 ])
+
+tab1 = Table.create(name: 'Tablica pierwsza')
+
+list1 = List.create(name: 'Lista pierwsza')
+
+tab1.lists << list1
+
+card1 = Card.create(name: 'Karta pierwsza')
