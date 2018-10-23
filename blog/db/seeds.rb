@@ -17,3 +17,5 @@ list1 = List.create(name: 'Lista pierwsza')
 tab1.lists << list1
 
 card1 = Card.create(name: 'Karta pierwsza')
+
+list1.cards << card1
