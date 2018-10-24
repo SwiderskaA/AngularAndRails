@@ -23,7 +23,7 @@ export class AppComponent {
    
    for(var element in this.tables) {
       
-    http.get('http://localhost:3000/tables/'+element.id+'/lists.json').subscribe(data => element.list = data);
+    //http.get('http://localhost:3000/tables/'+element.id+'/lists.json').subscribe(data => element.list = data);
   
    }
    
