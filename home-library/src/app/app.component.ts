@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class AppComponent {
-  title = 'app works!';
+  title = 'PAW - projekt Trello ';
   tables;
   lists;
  
@@ -29,8 +29,6 @@ export class AppComponent {
    
    //http.get('https://jsonplaceholder.typicode.com/todos/').subscribe(data => this.books = data);
   }
-
-  
 
 }
 
