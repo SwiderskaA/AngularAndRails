@@ -18,10 +18,10 @@ export class AppComponent {
   lists;
  
   constructor(private http: HttpClient) {
-   http.get('http://localhost:3000/tables.json').subscribe(data => {
-     this.tables = data;
+   //http.get('http://localhost:3000/tables.json').subscribe(data => {
+   //  this.tables = data;
      
-  });
+  //});
    
    for(var element in this.tables) {
       

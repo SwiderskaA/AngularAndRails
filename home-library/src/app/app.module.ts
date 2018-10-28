@@ -4,22 +4,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from "@angular/common/http";
 import {FormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
+import { LoginComponent } from './authorization/login/login.component'
 
-
+const routes: Routes = [
+  {
+    path:'',
+    component:AppComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
+  }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServerComponent
+    ServerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
   HttpClientModule,
-  FormsModule
+  FormsModule,
+  RouterModule.forRoot(
+    routes,
+    { enableTracing: true } // <-- debugging purposes only
+  )
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

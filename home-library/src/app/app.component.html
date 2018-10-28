@@ -7,7 +7,11 @@
     <p>Wpisz nazwe nowej tablicy : </p>
 <input type="text" class="form-control form-rounded" [(ngModel)]="name">
 <button class="form-control form-rounded">Dodaj tablicę </button>
+
 </div>
+<a routerLink="login" >Zaloguj się</a>
+<a routerLink="" >Home</a>
+
  <p>Stworzone tablice : </p>
 <ul>
   <li *ngFor="let table of tables">{{ table.name }}{{ table.id }}
@@ -19,6 +23,9 @@
 </ul>
 <hr>
 <app-server></app-server>
+
+aaa
+<router-outlet></router-outlet>
 
 
 
