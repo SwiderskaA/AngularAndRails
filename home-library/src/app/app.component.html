@@ -1,10 +1,13 @@
 <!-- src/app/app.component.html -->
  
-
-<input type="text" [(ngModel)]="name">
-<h1>
-  {{title}}
-</h1>
+<div class="col-xs-3">
+    <h3>
+        {{title}}
+    </h3>
+    <p>Wpisz nazwe nowej tablicy : </p>
+<input type="text" class="form-control form-rounded" [(ngModel)]="name">
+<button class="form-control form-rounded">Dodaj tablicę </button>
+</div>
  <p>Stworzone tablice : </p>
 <ul>
   <li *ngFor="let table of tables">{{ table.name }}{{ table.id }}
