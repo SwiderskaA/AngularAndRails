@@ -1,6 +1,6 @@
 <!-- src/app/app.component.html -->
  
-<div class="col-xs-3">
+<!-- <div class="col-xs-3">
     <h3>
         {{title}}
     </h3>
@@ -8,24 +8,16 @@
 <input type="text" class="form-control form-rounded" [(ngModel)]="name">
 <button class="form-control form-rounded">Dodaj tablicę </button>
 
-</div>
+</div> -->
 <a routerLink="login" >Zaloguj się</a>
 <a routerLink="" >Home</a>
 
- <p>Stworzone tablice : </p>
-<ul>
-  <li *ngFor="let table of tables">{{ table.name }}{{ table.id }}
-    <p>Listy w tej tablicy:</p>
-    <p> <!-- *ngFor="let l of table.list">{{ l.name }}-->
-      Sample Value1, Sample Value 2
-    </p>
-  </li>
-</ul>
+
 <hr>
 <app-server></app-server>
-
+<!-- 
 aaa
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
 
 
 
