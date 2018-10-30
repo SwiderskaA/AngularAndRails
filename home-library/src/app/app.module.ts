@@ -8,7 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
-import { LoginComponent } from './authorization/login/login.component'
+import { LoginComponent } from './authorization/login/login.component';
+import { MenuComponent} from './menu/menu.component';
+
 
 const routes: Routes = [
   {
@@ -25,7 +27,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ServerComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
