@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { LoginComponent } from './authorization/login/login.component';
 import { MenuComponent} from './menu/menu.component';
+import { TableComponent} from './table/table.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     AppComponent,
     ServerComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
