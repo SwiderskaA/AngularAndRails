@@ -9,8 +9,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
 import { LoginComponent } from './authorization/login/login.component';
+import { RegisterComponent } from './authorization/register/register.component';
 import { MenuComponent} from './menu/menu.component';
 import { TableComponent} from './table/table.component';
+import { ManagementComponent} from './management/management.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,16 @@ const routes: Routes = [
   {
     path:'content',
     component:ServerComponent
-  }
+  },
+  {
+    path:'register',
+    component:RegisterComponent
+  },
+  {
+    path:'management',
+    component:ManagementComponent
+  },
+
 ];
 
 @NgModule({
@@ -34,7 +45,9 @@ const routes: Routes = [
     ServerComponent,
     LoginComponent,
     MenuComponent,
-    TableComponent
+    TableComponent,
+    RegisterComponent,
+    ManagementComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,10 @@ const routes: Routes = [
     {
       path:'login',
       component: LoginComponent
+    },
+    {
+      path:'content',
+      component: ServerComponent
     }
   ];
 
