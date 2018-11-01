@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
  
 @Component({
   selector: 'app-management',
-  templateUrl: './management.component.html'
+  templateUrl: './management.component.html',
+  styleUrls: ['./management.component.css']
 })
 
 
