@@ -6,7 +6,7 @@ class TablesController < ApplicationController
   def index
     if current_user
       @tables = Table.where(user_id: current_user.id)
-      render json: @tables  
+      render :index
     else
       head(:unauthorized)
     end
