@@ -36,6 +36,10 @@ const routes: Routes = [
     path:'management',
     component:ManagementComponent
   },
+  {  
+    path:'table',
+    component:TableComponent
+  },
 
 ];
 
