@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from '../../auth.service';
 
 @Component({
     selector: 'app-authorization-login',
@@ -7,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LoginComponent implements OnInit{
 
-    constructor(){
+    constructor(private Auth:AuthService){
 
     }
 
@@ -17,11 +18,19 @@ export class LoginComponent implements OnInit{
 
     loginUser(event){
         event.preventDefault()
-        const target = event.target
-        const username=target.querySelector('#email').value
-        const password=target.querySelector('#pwd').value
-        alert(username)
-        console.log(username,password)
+        const target = event.target;
+        const username=target.querySelector('#email').value;
+        const password=target.querySelector('#pwd').value;
+        alert(username);
+        console.log(username,password);
+        this.Auth.getUserDetails(username,password).subscribe(data => {
+            if(data){
+                alert("Login success !!! :) ");
+            }else{
+                alert(data);
+            }
+        });
+
     }
 }
 

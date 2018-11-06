@@ -13,6 +13,7 @@ import { RegisterComponent } from './authorization/register/register.component';
 import { MenuComponent} from './menu/menu.component';
 import { TableComponent} from './table/table.component';
 import { ManagementComponent} from './management/management.component';
+import { AuthService} from './auth.service';
 
 
 const routes: Routes = [
