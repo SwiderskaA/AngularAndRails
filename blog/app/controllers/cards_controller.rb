@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :update, :destroy]
+  before_action :login_required , only: [:index, :show, :create, :update]
 
   # GET /cards
   # GET /cards.json
@@ -52,5 +53,11 @@ class CardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
       params.fetch(:card, {})
+    end
+
+    def login_required
+        if current_user == nil
+          head(:unauthorized)
+        end
     end
 end

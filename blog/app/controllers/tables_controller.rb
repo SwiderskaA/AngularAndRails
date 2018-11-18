@@ -1,15 +1,13 @@
 class TablesController < ApplicationController
   before_action :set_table, only: [:show, :update, :destroy]
+  before_action :login_required , only: [:index, :show, :create, :update]
 
   # GET /tables
   # GET /tables.json
   def index
-    if current_user
       @tables = Table.where(user_id: current_user.id)
       render :index
-    else
-      head(:unauthorized)
-    end
+
     
     
   end
@@ -17,34 +15,25 @@ class TablesController < ApplicationController
   # GET /tables/1
   # GET /tables/1.json
   def show
-    if current_user
       @table = Table.where(id: params[:id], user_id: current_user.id).first
         render json: @table
-    else
-      head(:unauthorized)
-    end
   end
 
   # POST /tables
   # POST /tables.json
   def create
     #sbyebug
-    if current_user
       @table = Table.new(table_params)
       @table.user_id = current_user.id
 
       @table.save
       render json: @table, status: :created
-    else
-      head(:unauthorized)
-    end
       
   end
 
   # PATCH/PUT /tables/1
   # PATCH/PUT /tables/1.json
   def update
-    if current_user
       tab = Table.find(params[:id])
       if tab.user_id == current_user.id
         if @table.update(table_params)
@@ -55,9 +44,6 @@ class TablesController < ApplicationController
       else
         head(:unauthorized)
       end
-    else
-      head(:unauthorized)
-    end
   end
 
   # DELETE /tables/1
@@ -75,5 +61,11 @@ class TablesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def table_params
       params.require(:table).permit(:name)
+    end
+
+    def login_required
+        if current_user == nil
+          head(:unauthorized)
+        end
     end
 end

@@ -1,19 +1,16 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :update, :destroy]
+  before_action :login_required , only: [:index, :show, :create, :update]
+
 
   def index
-    if current_user
       @lists = Table.where(user_id: current_user.id).first.lists
       render json: @lists  
-    else
-      head(:unauthorized)
-    end
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
-    if current_user
       @list = List.find(params[:id])
       tab = Table.find(@list.table_id)
       if tab.user_id == current_user.id
@@ -22,15 +19,11 @@ class ListsController < ApplicationController
       else
         head(:unauthorized)
       end
-    else
-      head(:unauthorized)
-    end
   end
 
   # POST /lists
   # POST /lists.json
   def create
-    if current_user
       @list = List.new(list_params)
 
       if @list.save
@@ -38,15 +31,11 @@ class ListsController < ApplicationController
       else
         render json: @list.errors, status: :unprocessable_entity
       end
-    else
-      head(:unauthorized)
-    end
   end
 
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
-    if current_user
       @list = List.find(params[:id])
       tab = Table.find(@list.table_id)
       if tab.user_id == current_user.id
@@ -58,9 +47,6 @@ class ListsController < ApplicationController
       else
         head(:unauthorized)
       end
-    else
-      head(:unauthorized)
-    end
   end
 
   # DELETE /lists/1
@@ -78,5 +64,10 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.require(:list).permit(:name, :table_id)
+    end
+        def login_required
+        if current_user == nil
+          head(:unauthorized)
+        end
     end
 end
