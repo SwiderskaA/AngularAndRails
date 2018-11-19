@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_134918) do
+ActiveRecord::Schema.define(version: 2018_11_19_213555) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -21,9 +21,27 @@ ActiveRecord::Schema.define(version: 2018_11_02_134918) do
   create_table "cards", force: :cascade do |t|
     t.integer "list_id"
     t.text "name"
+    t.text "description"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_cards_on_list_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "name"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_comments_on_card_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.string "description"
+    t.integer "table_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["table_id"], name: "index_histories_on_table_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -38,8 +56,12 @@ ActiveRecord::Schema.define(version: 2018_11_02_134918) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_tables_on_user_id"
+    t.boolean "closed", default: false, null: false
+  end
+
+  create_table "tables_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "table_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

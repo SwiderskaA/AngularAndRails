@@ -5,17 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Book.create!([
-  { name: 'Copying and Pasting from Stack Overflow' },
-  { name: 'Trying Stuff Until it Works' }
-])
 
-tab1 = Table.create(name: 'Tablica pierwsza')
 
-list1 = List.create(name: 'Lista pierwsza')
+usr = User.create(email: 'test2@wbt.com', password: 'lolopolo', password_confirmation: 'lolopolo')
+tab = Table.create(name: 'tablica')
+list = List.create(name: "lista", table_id: tab.id)
+tab.lists << list
+usr.tables << tab
 
-tab1.lists << list1
 
-card1 = Card.create(name: 'Karta pierwsza')
+tab.save
+usr.save
 
-list1.cards << card1
+

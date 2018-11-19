@@ -1,22 +1,20 @@
 class TablesController < ApplicationController
   before_action :set_table, only: [:show, :update, :destroy]
-  before_action :login_required , only: [:index, :show, :create, :update]
+  before_action :login_required , only: [:index, :show, :create, :update, :close]
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   # GET /tables
   # GET /tables.json
   def index
-      @tables = Table.where(user_id: current_user.id)
-      render :index
-
-    
-    
+      @tables = current_user.tables
+      render :index    
   end
 
   # GET /tables/1
   # GET /tables/1.json
   def show
-      @table = Table.where(id: params[:id], user_id: current_user.id).first
-        render json: @table
+      @table = current_user.tables.where(id: params[:id])
+      render json: @table
   end
 
   # POST /tables
@@ -24,25 +22,22 @@ class TablesController < ApplicationController
   def create
     #sbyebug
       @table = Table.new(table_params)
-      @table.user_id = current_user.id
+      @table.users << current_user
 
       @table.save
-      render json: @table, status: :created
-      
+      History.create(table_id: @table.id, description: "User " + current_user.email + "created table called " + @table.name)
+      render json: @table, status: :created      
   end
 
   # PATCH/PUT /tables/1
   # PATCH/PUT /tables/1.json
   def update
-      tab = Table.find(params[:id])
-      if tab.user_id == current_user.id
-        if @table.update(table_params)
-          render :show, status: :ok, location: @table
-        else
-          render json: @table.errors, status: :unprocessable_entity
-        end
+      @table = current_user.tables.where(id: params[:id])
+      if @table.update(table_params)
+        History.create(table_id: @table.id, description: "User " + current_user.email + "updated table called " + @table.name)
+        render :show, status: :ok, location: @table
       else
-        head(:unauthorized)
+        render json: @table.errors, status: :unprocessable_entity
       end
   end
 
@@ -50,6 +45,13 @@ class TablesController < ApplicationController
   # DELETE /tables/1.json
   def destroy
     @table.destroy
+  end
+
+  def close 
+    @table = current_user.tables.where(id: params[:id])
+    table.closed = true
+    table.save
+    head(:ok)   
   end
 
   private
@@ -68,4 +70,6 @@ class TablesController < ApplicationController
           head(:unauthorized)
         end
     end
+
+    
 end

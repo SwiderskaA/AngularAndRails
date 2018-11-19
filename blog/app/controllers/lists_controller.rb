@@ -1,20 +1,24 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :update, :destroy]
   before_action :login_required , only: [:index, :show, :create, :update]
-
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
-      @lists = Table.where(user_id: current_user.id).first.lists
+    tab = current_user.tables.where(id: params[:table_id]).first
+    if tab
+      @lists = tab.lists
       render json: @lists  
+    else
+      head(:not_found)
+    end
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
       @list = List.find(params[:id])
-      tab = Table.find(@list.table_id)
-      if tab.user_id == current_user.id
-
+      usr = @list.table.users.where(id: current_user.id)
+      if usr
         render json: @list
       else
         head(:unauthorized)
@@ -27,6 +31,7 @@ class ListsController < ApplicationController
       @list = List.new(list_params)
 
       if @list.save
+        History.create(table_id: @list.table.id, description: "User " + current_user.email + "created list called " + @list.name)
         render :show, status: :created, location: @list
       else
         render json: @list.errors, status: :unprocessable_entity
@@ -37,9 +42,10 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1.json
   def update
       @list = List.find(params[:id])
-      tab = Table.find(@list.table_id)
-      if tab.user_id == current_user.id
+      usr = @list.table.users.where(id: current_user.id)
+      if usr
         if @list.update(list_params)
+          History.create(table_id: @list.table.id, description: "User " + current_user.email + "updated list called " + @list.name)
           render :show, status: :ok, location: @list
         else
           render json: @list.errors, status: :unprocessable_entity
@@ -65,9 +71,12 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:name, :table_id)
     end
-        def login_required
-        if current_user == nil
-          head(:unauthorized)
-        end
+    def login_required
+      if current_user == nil
+        head(:unauthorized)
+      end
+    end
+    def record_not_found
+      render :json => {:message => "record not found"}, status: :not_found
     end
 end
