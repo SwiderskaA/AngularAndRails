@@ -1,14 +1,25 @@
+
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
         <div class="container">
           <h1>Trello PAW</h1>
             <ul class="nav navbar-nav" routerLinkActive="active">
-                <li class="nav-item"><a class="nav-link" routerLink="table">Home</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="login">Log in</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="register">Register</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="content">Content</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="management">Managment</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="">Create new table</a></li>
+                <li class="nav-item">
+                    <button class="btn navbar-btn glyphicon glyphicon-home btn-primary-outline btn-space" routerLink="table"></button></li>
+                <li class="nav-item">
+                        <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="content">Content</button></li>
+                <li class="nav-item">
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="login">Log in</button></li>
+                <li class="nav-item">
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="register">Register</button></li>
+                <li class="nav-item">
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="management">Managment</button></li>
             </ul>
+            <div class="plusright">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                  <button class="btn navbar-btn glyphicon glyphicon-plus btn-primary-outline btn-right" routerLink="management"></button></li>
+                </ul>
+              </div>
         </div>
 </nav>
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>

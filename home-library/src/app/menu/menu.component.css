@@ -1,9 +1,26 @@
 .navbar{
-    background-color:black;
-    opacity: 0.25;
-    height:35px;
+    background:rgba(0,0,0,0.3);
+    height:30px;
+    width: auto;
+    font-size: 15px;
     font-family: Arial;
     font-weight: bold;
+    color: white;
+}
+.btn-primary-outline {
+  background-color: rgba(255,255,255,0.2);
+  font-weight: bold;
+}
+
+.button{
+      font-family: Arial;
+}
+
+.btn-space {
+    margin-right: 10px;
+}
+.plusright {
+    margin-right: -500px;
 }
 
 .nav-link{
@@ -24,5 +41,5 @@ h1{
   margin-left: 45%;
   position: absolute;
   color: white;
-  opacity: 0.7;
+  opacity: 0.5;
 }
