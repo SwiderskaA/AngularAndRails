@@ -1,5 +1,28 @@
 .navbar{
-    background-color:lightgray;
-    border-radius: 25px;
-    height:65px;
+    background-color:black;
+    opacity: 0.25;
+    height:35px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.nav-link{
+  opacity: 1;
+  color:white !important;
+}
+
+.container{
+  float:left;
+}
+
+h1{
+  font-family: Apple Chancery, cursive;
+  font-style: oblique;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 45%;
+  position: absolute;
+  color: white;
+  opacity: 0.7;
 }

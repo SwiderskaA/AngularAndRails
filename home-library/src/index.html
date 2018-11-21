@@ -1,14 +1,122 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <meta charset="utf-8">
-  <title>HomeLibrary</title>
+  <title>Trello PAW</title>
   <base href="/">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+
+
+    <ul class='custom-menu'>
+      <li data-action = "White">White</li>
+      <li data-action = "Grey">Grey</li>
+      <li data-action = "Black">Black</li>
+      <li data-action = "Red">Red</li>
+      <li data-action = "Orange">Orange</li>
+      <li data-action = "Green">Green</li>
+      <li data-action = "Light Green">Light Green</li>
+      <li data-action = "Blue">Blue</li>
+      <li data-action = "Light Blue">Light Blue</li>
+      <li data-action = "Pink">Pink</li>
+      <li data-action = "Violet">Violet</li>
+    </ul>
+
   <app-root></app-root>
 </body>
+
+<script>
+// Trigger action when the contexmenu is about to be shown
+$(document).bind("contextmenu", function (event) {
+
+    // Avoid the real one
+    event.preventDefault();
+
+    // Show contextmenu
+    $(".custom-menu").finish().toggle(100).
+
+    // In the right position (the mouse)
+    css({
+        top: event.pageY + "px",
+        left: event.pageX + "px"
+    });
+});
+
+
+// If the document is clicked somewhere
+$(document).bind("mousedown", function (e) {
+
+    // If the clicked element is not the menu
+    if (!$(e.target).parents(".custom-menu").length > 0) {
+
+        // Hide it
+        $(".custom-menu").hide(100);
+    }
+});
+
+
+// If the menu element is clicked
+$(".custom-menu li").click(function(){
+
+    // This is the triggered action name
+    switch($(this).attr("data-action")) {
+        // A case for each action. Your actions here
+        case "Red": changebg_red(); break;
+        case "Orange": changebg_orange(); break;
+        case "Green": changebg_green(); break;
+        case "Light Green": changebg_lightgreen(); break;
+        case "Blue": changebg_blue(); break;
+        case "Light Blue": changebg_lightblue(); break;
+        case "Pink": changebg_pink(); break;
+        case "Violet": changebg_violet(); break;
+        case "White": changebg_white(); break;
+        case "Grey": changebg_grey(); break;
+        case "Black": changebg_black(); break;
+    }
+
+    // Hide it AFTER the action was triggered
+    $(".custom-menu").hide(100);
+  });
+</script>
+
+<script>
+function changebg_red() {
+    document.body.style.backgroundColor = "#ae4736";
+}
+function changebg_white() {
+    document.body.style.backgroundColor = "white";
+}
+function changebg_green() {
+    document.body.style.backgroundColor = "#53983f";
+}
+function changebg_lightgreen() {
+    document.body.style.backgroundColor = "#51be6f";
+}
+function changebg_blue() {
+    document.body.style.backgroundColor = "#137abd";
+}
+function changebg_lightblue() {
+    document.body.style.backgroundColor = "#1daecb";
+}
+function changebg_black() {
+    document.body.style.backgroundColor = "black";
+}
+function changebg_pink() {
+    document.body.style.backgroundColor = "#cb5c91";
+}
+function changebg_orange() {
+    document.body.style.backgroundColor = "#d28f3e";
+}
+function changebg_violet() {
+    document.body.style.backgroundColor = "#88629d";
+}
+function changebg_grey() {
+    document.body.style.backgroundColor = "#838c91";
+}
+</script>
+
+
 </html>
