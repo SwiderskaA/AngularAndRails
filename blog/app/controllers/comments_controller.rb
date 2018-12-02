@@ -43,6 +43,13 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def delete
+    @comment = Comment.find(params[:comment_id])
+    @comment.deleted = true
+    @comment.save
+    head(:ok)  
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

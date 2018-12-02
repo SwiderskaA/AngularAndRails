@@ -17,4 +17,13 @@ usr.tables << tab
 tab.save
 usr.save
 
+card = Card.create(name: 'karta')
+list.cards << card
 
+card.save
+
+comment = Comment.create(name: 'koemnatarz')
+
+card.comments << comment
+
+comment.save

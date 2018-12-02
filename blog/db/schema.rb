@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_213555) do
+ActiveRecord::Schema.define(version: 2018_12_02_115716) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_213555) do
     t.text "name"
     t.text "description"
     t.integer "position"
+    t.boolean "archived", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_cards_on_list_id"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_213555) do
   create_table "comments", force: :cascade do |t|
     t.text "name"
     t.integer "card_id"
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_comments_on_card_id"
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_213555) do
   create_table "lists", force: :cascade do |t|
     t.integer "table_id"
     t.text "name"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["table_id"], name: "index_lists_on_table_id"
@@ -62,6 +65,30 @@ ActiveRecord::Schema.define(version: 2018_11_19_213555) do
   create_table "tables_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "table_id", null: false
+  end
+
+  create_table "task_lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_task_lists_on_card_id"
+  end
+
+  create_table "tasklists", force: :cascade do |t|
+    t.string "name"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_tasklists_on_card_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.integer "tasklist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tasklist_id"], name: "index_tasks_on_tasklist_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,6 +5,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.text :name
       t.text :description
       t.integer :position
+      t.boolean :archived, :null => false, :default => false
 
       t.timestamps
     end

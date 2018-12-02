@@ -29,6 +29,8 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
       @list = List.new(list_params)
+      lists = Table.find(params[:table_id]).lists
+      @list.position = lists.length + 1
 
       if @list.save
         History.create(table_id: @list.table.id, description: "User " + current_user.email + "created list called " + @list.name)
@@ -59,6 +61,26 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list.destroy
+  end
+
+  def change_position
+    @list = List.find(params[:list_id])
+    lists = @list.table.lists
+    arr_ids = Array.new
+    lists.each do |list|
+      arr_ids.push(list.id)
+    end
+    arr_ids.delete_at(@list.position - 1)
+    arr_ids.insert(params[:position].to_i, @list.id)
+
+    arr_ids.each_with_index do |id, index|
+      list = List.find(id)
+      list.position = index + 1
+      list.save
+    end
+
+    History.create(table_id: @list.table.id, description: "User " + current_user.email + "change position of card called " + @list.name + " from " + @list.position.to_s + " to " + params[:position])
+    head(:ok)
   end
 
   private

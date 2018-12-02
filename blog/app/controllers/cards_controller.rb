@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :update, :destroy]
-  before_action :login_required , only: [:index, :show, :create, :update]
+  before_action :login_required , only: [:index, :show, :create, :update, :archived]
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   # GET /cards
@@ -77,6 +77,35 @@ class CardsController < ApplicationController
 
     History.create(table_id: @card.list.table.id, description: "User " + current_user.email + "change position of card called " + @card.name + " from " + @card.position + " to " + params[:position])
     head(:ok)
+  end
+
+  def archive 
+     @card = Card.find(params[:card_id])
+     @card.archived = true
+     if @card.save 
+      head(:ok)
+    else
+      head(:forbidden)
+    end
+  end
+
+  def copy
+     card = Card.find(params[:card_id])
+     cards = List.find(params[:list_id]).cards
+     
+     @card = Card.create(name: card.name, description: card.description, list_id: params[:list_id], position: cards.length)
+
+     if @card.save
+      if params[:position]
+        #todo
+      end
+          render :show, status: :created, location: @card
+      else
+        render json: @card.errors, status: :unprocessable_entity
+      end
+
+
+
   end
 
   private
