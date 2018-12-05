@@ -23,11 +23,17 @@ export class AuthService {
        
 
      getUserDetails(username,password){
-         
          //post these details to api server ( return user info if correct)
          return this.http.post('http://localhost:3000/sessions',{
              "email":username,"password":password
          });
+     }
+
+     registerUser(email,password){
+         //there connect with proper endpoint with arguments
+      //   return this.http.post('http://localhost:3000/users/signup',{
+        //     "email":email,"password":password,"password_confirmation":password
+       //  });
      }
 
 }

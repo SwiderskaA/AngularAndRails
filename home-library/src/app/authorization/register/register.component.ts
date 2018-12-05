@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { AuthService } from '../../auth.service';
 
 @Component({
     selector: 'app-authorization-register',
@@ -6,6 +7,25 @@ import { Component } from "@angular/core";
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent{
+
+
+   constructor(private Auth:AuthService){
+
+   }
+
+   ngOnInit(){
+
+   }
+
+   registerNewUser(event){
+       event.preventDefault();
+       const target = event.target;
+      const username=target.querySelector('#email').value;
+      const password=target.querySelector('#pswd1').value;
+      alert("You try to register user : " + username+ " with password " +password);
+      //there should be executed service method of register !!! TO DO 
+
+   }
 }
 
 

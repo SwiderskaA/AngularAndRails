@@ -12,6 +12,7 @@ import { JsonPipe } from "@angular/common";
 export class LoginComponent implements OnInit{
     
      token:String;
+     email:String;
 
     constructor(private Auth:AuthService){
 
@@ -30,8 +31,9 @@ export class LoginComponent implements OnInit{
         console.log(username,password);
         this.Auth.getUserDetails(username,password).subscribe(data => {
             if(data){
+              this.email=data['email'];
               this.token=data['authentication_token'];
-              alert("Your token is : " + this.token);
+              alert("Your token is : " + this.token + " for email "+this.email);
             }else{
                 alert(data);
             }
