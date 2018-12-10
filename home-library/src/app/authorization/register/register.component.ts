@@ -22,6 +22,7 @@ export class RegisterComponent{
        const target = event.target;
       const username=target.querySelector('#email').value;
       const password=target.querySelector('#pswd1').value;
+      const passwordConfirmation=target.querySelector('#pswd2').value;
       alert("You try to register user : " + username+ " with password " +password);
       //there should be executed service method of register !!! TO DO 
 

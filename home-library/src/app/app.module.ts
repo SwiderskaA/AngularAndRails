@@ -13,7 +13,9 @@ import { RegisterComponent } from './authorization/register/register.component';
 import { MenuComponent} from './menu/menu.component';
 import { TableComponent} from './table/table.component';
 import { ManagementComponent} from './management/management.component';
+import { CreationComponent } from './creation/creation.component';
 import { AuthService} from './auth.service';
+import { UserDataService } from './user_data.service';
 
 
 const routes: Routes = [
@@ -41,7 +43,10 @@ const routes: Routes = [
     path:'table',
     component:TableComponent
   },
-
+  {  
+    path:'creation',
+    component:CreationComponent
+  }
 ];
 
 @NgModule({
@@ -52,7 +57,8 @@ const routes: Routes = [
     MenuComponent,
     TableComponent,
     RegisterComponent,
-    ManagementComponent
+    ManagementComponent,
+    CreationComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,8 @@ const routes: Routes = [
   )
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthService,
+  UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -47,12 +47,12 @@ input{
 
 input[type=email] {
       background-color: #ededed;
-    color: white;
+    color: black;
 }
 
 input[type=password] {
       background-color: #ededed;
-    color: white;
+    color: black;
 }
 
 h1{

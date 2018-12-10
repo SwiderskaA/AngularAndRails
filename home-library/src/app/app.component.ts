@@ -1,6 +1,6 @@
 // src/app/app.component.ts
  
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
  
 @Component({
@@ -10,7 +10,17 @@ import { Component } from '@angular/core';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+
+  constructor(){
+
+  }
+
+  ngOnInit(): void {
+   // throw new Error("Method not implemented.");
+  }
+ 
   name="projektTrello"
   title = 'PAW - projekt Trello ';
 }

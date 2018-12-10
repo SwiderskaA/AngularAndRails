@@ -8,7 +8,8 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 export class AuthService {
-  
+    
+
     constructor(private http: HttpClient){
 
     }
@@ -31,9 +32,11 @@ export class AuthService {
 
      registerUser(email,password){
          //there connect with proper endpoint with arguments
-      //   return this.http.post('http://localhost:3000/users/signup',{
+      //   return this.http.post('http://localhost:3000/user,{
         //     "email":email,"password":password,"password_confirmation":password
        //  });
      }
 
-}
+    
+    }
+
