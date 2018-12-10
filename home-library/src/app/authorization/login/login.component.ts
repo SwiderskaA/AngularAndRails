@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit{
 
     message:string;
     
-     token:String;
-     email:String;
+     token:string;
+     email:string;
 
     constructor(private Auth:AuthService,private data: DataExchangeService){
 
@@ -26,15 +26,14 @@ export class LoginComponent implements OnInit{
       }
     
       newMessage() {
-        this.data.changeMessage("i am sending you value of email and token !!!");
-        alert('new message function');
+        this.data.changeMessage(this.email);
       }
 
     loginUser(event){
-        this.newMessage();
         event.preventDefault()
         const target = event.target;
         const username=target.querySelector('#email').value;
+        this.email=username; //pass input email into component variable -testing context 
         const password=target.querySelector('#pwd').value;
         alert(username);
         console.log(username,password);
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit{
                 alert(data);
             }
         });
-      
+        this.newMessage(); //pass input variables by the service
     }
 }
 

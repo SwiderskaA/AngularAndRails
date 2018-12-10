@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import{ DataExchangeService} from "../data-exchange.service";
 
 @Component({
     selector: 'app-menu',
@@ -8,12 +9,14 @@ import { Component, OnInit } from "@angular/core";
 
 export class MenuComponent implements OnInit{
    
+    message:string;
    
-   
-    ngOnInit(): void {
-       // throw new Error("Method not implemented.");
-    }
-   currentUser:String;
-   //to do - getting this value from proper service
+   constructor(private data: DataExchangeService){
+       
+   }
+   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message)
+  }
+  
 }
 
