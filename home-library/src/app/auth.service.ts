@@ -31,10 +31,11 @@ export class AuthService {
      }
 
      registerUser(email,password){
-         //there connect with proper endpoint with arguments
-      //   return this.http.post('http://localhost:3000/user,{
-        //     "email":email,"password":password,"password_confirmation":password
-       //  });
+     
+        //sending input values to backend server 
+       return this.http.post('http://localhost:3000/user',{
+           "email":email,"password":password,"password_confirmation":password
+       });
      }
 
     
