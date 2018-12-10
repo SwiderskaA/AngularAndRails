@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from '../../auth.service';
 import { AngularWaitBarrier } from "blocking-proxy/built/lib/angular_wait_barrier";
 import { JsonPipe } from "@angular/common";
+import {DataExchangeService} from '../../data-exchange.service';
 
 
 @Component({
@@ -10,19 +11,27 @@ import { JsonPipe } from "@angular/common";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+
+    message:string;
     
      token:String;
      email:String;
 
-    constructor(private Auth:AuthService){
+    constructor(private Auth:AuthService,private data: DataExchangeService){
 
     }
 
-    ngOnInit(){
-
-    }
+    ngOnInit() {
+        this.data.currentMessage.subscribe(message => this.message = message)
+      }
+    
+      newMessage() {
+        this.data.changeMessage("i am sending you value of email and token !!!");
+        alert('new message function');
+      }
 
     loginUser(event){
+        this.newMessage();
         event.preventDefault()
         const target = event.target;
         const username=target.querySelector('#email').value;
@@ -38,7 +47,7 @@ export class LoginComponent implements OnInit{
                 alert(data);
             }
         });
-
+      
     }
 }
 
