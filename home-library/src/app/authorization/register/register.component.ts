@@ -31,6 +31,7 @@ export class RegisterComponent{
           alert(data);
         }else{
             alert("none");
+            //after rest response from rails here it is !!!!!!
         }
     });
    }
