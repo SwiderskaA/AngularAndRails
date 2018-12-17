@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_115716) do
+ActiveRecord::Schema.define(version: 2018_12_17_165221) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_115716) do
     t.boolean "archived", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deadline"
+    t.boolean "showdate"
     t.index ["list_id"], name: "index_cards_on_list_id"
   end
 
@@ -65,6 +67,14 @@ ActiveRecord::Schema.define(version: 2018_12_02_115716) do
   create_table "tables_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "table_id", null: false
+  end
+
+  create_table "task_lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_task_lists_on_card_id"
   end
 
   create_table "tasklists", force: :cascade do |t|

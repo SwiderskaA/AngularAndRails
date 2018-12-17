@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post :change_position
     post :archive
     post :copy
+    put :set_deadline
+    put :unset_deadline
   end
 
   resources :sessions, only: [:create, :destroy]

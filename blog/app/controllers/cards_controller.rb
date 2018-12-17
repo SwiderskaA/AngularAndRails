@@ -108,6 +108,31 @@ class CardsController < ApplicationController
 
   end
 
+  def set_deadline
+    @card = Card.find(params[:card_id])
+    datetime = DateTime.new(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i, 0)
+    @card.deadline = datetime
+    @card.showdate = true;
+
+    if @card.save
+      render :show, status: :created, location: @card
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
+  end
+
+  def unset_deadline
+    @card = Card.find(params[:card_id])
+    @card.showdate = false;
+
+    if @card.save
+      render :show, status: :created, location: @card
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
