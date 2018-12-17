@@ -7,14 +7,18 @@ import { DataExchangeService } from '../data-exchange.service';
     templateUrl: './server.component.html'
 })
 export class ServerComponent{
-
-    message:string;  //there will be email 
+    
+    currentUser:string="unknown"; //there email of current user
+    token:string; //there token for cuurent user 
+    message:string;  
+    myContent:any="so far unknown";
     tables;
     lists;
    
     constructor(private http: HttpClient,private data: DataExchangeService) {
-     http.get('http://localhost:3000/tables.json').subscribe(data => {
-      this.tables = data;
+     http.get('http://localhost:3000/tables').subscribe(data => {
+         alert(data.toString);
+      this.myContent = data;
     });
      
      for(var element in this.tables) {
