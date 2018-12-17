@@ -47,6 +47,9 @@ class CardsController < ApplicationController
   def update
     if @card.update(card_params)
       History.create(table_id: @card.list.table.id, description: "User " + current_user.email + "updated card called " + @card.name)
+      if params[:list_id]
+        Notification.create(user_id: current_user.id, card_id: @card.id, list_id: params[:list_id])
+      end
       render :show, status: :ok, location: @card
     else
       render json: @card.errors, status: :unprocessable_entity
@@ -125,6 +128,26 @@ class CardsController < ApplicationController
     @card = Card.find(params[:card_id])
     @card.showdate = false;
 
+    if @card.save
+      render :show, status: :created, location: @card
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
+  end
+
+  def observe
+    @card = Card.find(params[:card_id])
+    @card.users << current_user
+    if @card.save
+      render :show, status: :created, location: @card
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
+  end
+
+  def unobserve
+    @card = Card.find(params[:card_id])
+    @card.users.delete(current_user)
     if @card.save
       render :show, status: :created, location: @card
     else

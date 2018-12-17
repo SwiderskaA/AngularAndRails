@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     post :copy
     put :set_deadline
     put :unset_deadline
+    post :observe
+    post :unobserve
   end
 
   resources :sessions, only: [:create, :destroy]
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :tasklists, only: [:create, :update, :show]
   resources :tasks, only: [:create, :update, :show]
+
+  resources :notifications, only: [:index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
