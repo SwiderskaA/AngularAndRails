@@ -15,7 +15,7 @@ export class AuthService {
 
     }
 
-  
+  baseUrl = 'http://localhost:3000/tables';
        
 
      getUserDetails(username,password){
@@ -36,10 +36,10 @@ export class AuthService {
      getContentForUser(email,token){
         const httpOptions = {
             headers: new HttpHeaders({
-              'Content-Type': 'application/json',
-              'X-User-Email': email,
-              'X-User-Token': token
-            })
+                'Content-Type': 'application/json',
+                'X-User-Email': 'test12345@op.pl',
+                'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+              })
           };
 
         return this.http.get('http://localhost:3000/tables/', httpOptions
@@ -60,6 +60,20 @@ export class AuthService {
         },httpOptions);
      }
 
+     updateTableName(newName){
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.put('http://localhost:3000/tables/5' ,{
+        "id":5,
+        "name":"aaa"
+        },httpOptions);
+     }
     
     }
 

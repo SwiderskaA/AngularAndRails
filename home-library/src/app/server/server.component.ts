@@ -32,8 +32,8 @@ export class ServerComponent{
         this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe(data => {
             
             if(data){
-              this.myContent = data['name'];
-              alert(data['name']);
+              this.myContent = data;
+              alert(data);
             }else{
                 alert(data);
             }

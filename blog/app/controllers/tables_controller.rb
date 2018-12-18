@@ -7,13 +7,12 @@ class TablesController < ApplicationController
   # GET /tables.json
   def index
       @tables = current_user.tables
-      render :index    
+      render json:@tables
   end
 
   # GET /tables/1
   # GET /tables/1.json
   def show
-      @table = current_user.tables.where(id: params[:id])
       render json: @table
   end
 
@@ -26,16 +25,15 @@ class TablesController < ApplicationController
 
       @table.save
       History.create(table_id: @table.id, description: "User " + current_user.email + "created table called " + @table.name)
-      render json: @table, status: :created      
+      render json: @table, status: :created
   end
 
   # PATCH/PUT /tables/1
   # PATCH/PUT /tables/1.json
   def update
-      @table = current_user.tables.where(id: params[:id])
       if @table.update(table_params)
         History.create(table_id: @table.id, description: "User " + current_user.email + "updated table called " + @table.name)
-        render :show, status: :ok, location: @table
+        render json: @table, status: :ok, location: @table
       else
         render json: @table.errors, status: :unprocessable_entity
       end
@@ -47,11 +45,11 @@ class TablesController < ApplicationController
     @table.destroy
   end
 
-  def close 
+  def close
     @table = current_user.tables.where(id: params[:id])
     table.closed = true
     table.save
-    head(:ok)   
+    head(:ok)
   end
 
   private
@@ -71,5 +69,5 @@ class TablesController < ApplicationController
         end
     end
 
-    
+
 end

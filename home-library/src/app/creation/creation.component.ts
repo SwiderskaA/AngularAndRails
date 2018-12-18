@@ -14,12 +14,12 @@ export class CreationComponent{
     }
     createNewTable(event){
         event.preventDefault();
-         this.Auth.createTable('dupa6666123455').subscribe(data => {
+        const target = event.target;
+        const newName=target.querySelector('#newName').value;
+         this.Auth.updateTableName(newName).subscribe(data => {
             if(data){
-               alert("data");
-             }else{
-                alert("none");
-        }
+              // alert("data");
+             }
         });
     }
 }
