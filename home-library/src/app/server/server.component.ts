@@ -30,9 +30,10 @@ export class ServerComponent{
     ngOnInit() {
         this.data.currentMessage.subscribe(message => this.message = message);
         this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe(data => {
+            
             if(data){
-              this.myContent = data;
-              
+              this.myContent = data['name'];
+              alert(data['name']);
             }else{
                 alert(data);
             }
@@ -42,6 +43,10 @@ export class ServerComponent{
        //here i cant read value after logging in ! 
        //to do 
        // alert(this.myContent.values);
+      }
+
+      addTable(){
+
       }
 }
 

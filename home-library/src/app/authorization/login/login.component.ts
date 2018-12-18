@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
       }
 
     loginUser(event){
-        event.preventDefault()
+        event.preventDefault();
         const target = event.target;
         const username=target.querySelector('#email').value;
         this.email=username; //pass input email into component variable -testing context 
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit{
             }
         });
         this.newMessage(); //pass input variables by the service
+
         //after login set in menu bar name of current user 
     }
 }

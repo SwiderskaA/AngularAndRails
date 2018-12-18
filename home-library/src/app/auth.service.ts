@@ -36,18 +36,28 @@ export class AuthService {
      getContentForUser(email,token){
         const httpOptions = {
             headers: new HttpHeaders({
+              'Content-Type': 'application/json',
               'X-User-Email': email,
               'X-User-Token': token
             })
           };
-        return this.http.get('http://localhost:3000/tables', httpOptions
+
+        return this.http.get('http://localhost:3000/tables/', httpOptions
         );
      }
 
      createTable(tableName){
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
         return this.http.post('http://localhost:3000/tables',{
             "name":tableName
-        });
+        },httpOptions);
      }
 
     
