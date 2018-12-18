@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit{
             }
         });
         this.newMessage(); //pass input variables by the service
+        //after login set in menu bar name of current user 
     }
 }
 

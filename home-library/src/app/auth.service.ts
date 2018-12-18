@@ -1,6 +1,7 @@
 import { Injectable, Component } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
 
 
 @Injectable({
@@ -14,13 +15,7 @@ export class AuthService {
 
     }
 
-   httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'X-User-Email': 'test@wbt.com',
-    'X-User-Token':'skZ_9MBKCbkS9mPLUi2P'
-  })
-};
+  
        
 
      getUserDetails(username,password){
@@ -36,6 +31,23 @@ export class AuthService {
        return this.http.post('http://localhost:3000/user',{
            "email":email,"password":password,"password_confirmation":password
        });
+     }
+
+     getContentForUser(email,token){
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'X-User-Email': email,
+              'X-User-Token': token
+            })
+          };
+        return this.http.get('http://localhost:3000/tables', httpOptions
+        );
+     }
+
+     createTable(tableName){
+        return this.http.post('http://localhost:3000/tables',{
+            "name":tableName
+        });
      }
 
     

@@ -84,14 +84,6 @@ ActiveRecord::Schema.define(version: 2018_12_17_183623) do
     t.integer "table_id", null: false
   end
 
-  create_table "task_lists", force: :cascade do |t|
-    t.string "name"
-    t.integer "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_task_lists_on_card_id"
-  end
-
   create_table "tasklists", force: :cascade do |t|
     t.string "name"
     t.integer "card_id"

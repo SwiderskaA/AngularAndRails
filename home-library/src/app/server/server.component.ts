@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { DataExchangeService } from '../data-exchange.service';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-server',
@@ -8,18 +9,15 @@ import { DataExchangeService } from '../data-exchange.service';
 })
 export class ServerComponent{
     
-    currentUser:string="unknown"; //there email of current user
-    token:string; //there token for cuurent user 
-    message:string;  
+   
+    token:string='6aA-wdxX-Fzsu3Rnj5Yt'; //there token for cuurent user //so far set for tests 
+    message:string;  //email of current user 
     myContent:any="so far unknown";
     tables;
     lists;
    
-    constructor(private http: HttpClient,private data: DataExchangeService) {
-     http.get('http://localhost:3000/tables').subscribe(data => {
-         alert(data.toString);
-      this.myContent = data;
-    });
+    constructor(private http: HttpClient,private data: DataExchangeService,private Auth:AuthService) {
+  
      
      for(var element in this.tables) {
       //http.get('http://localhost:3000/tables/'+element.id+'/lists.json').subscribe(data => element.list = data);
@@ -31,6 +29,10 @@ export class ServerComponent{
 
     ngOnInit() {
         this.data.currentMessage.subscribe(message => this.message = message)
+        this.myContent=this.Auth.getContentForUser(this.message,this.token);
+       //here i cant read value after logging in ! 
+       //to do 
+       // alert(this.myContent.values);
       }
 }
 
