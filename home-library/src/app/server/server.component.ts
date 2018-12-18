@@ -28,8 +28,17 @@ export class ServerComponent{
     }
 
     ngOnInit() {
-        this.data.currentMessage.subscribe(message => this.message = message)
-        this.myContent=this.Auth.getContentForUser(this.message,this.token);
+        this.data.currentMessage.subscribe(message => this.message = message);
+        this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe(data => {
+            if(data){
+              this.myContent = data;
+              
+            }else{
+                alert(data);
+            }
+        });
+        
+        
        //here i cant read value after logging in ! 
        //to do 
        // alert(this.myContent.values);
