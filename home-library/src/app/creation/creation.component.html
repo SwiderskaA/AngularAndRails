@@ -1,5 +1,5 @@
 <br><br><br>
-<h4>Create new table</h4>
+<h4>Create new table,new list</h4>
 
 <div class="container">
     <form (submit)="createNewTable($event)">
@@ -17,6 +17,17 @@
         <input type="email" class="form-control" id="newNameList" placeholder="Enter list name">
       </div>
       <button type="submit" class="btn btn-primary">Create new list</button>
+    </form>
+  </div>
+  <div class="container">
+    <form (submit)="changeListPostion($event)">
+      <div class="form-group">
+        <label for="email">Podaj id listy</label>
+          <input type="email" class="form-control" id="id_" placeholder="Enter id of list">
+        <label for="email">Zmień pozycję listy </label>
+        <input type="email" class="form-control" id="newPosition" placeholder="Enter new position">
+      </div>
+      <button type="submit" class="btn btn-primary">Zmień pozycję</button>
     </form>
   </div>
   

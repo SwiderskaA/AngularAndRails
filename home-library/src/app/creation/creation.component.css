@@ -5,3 +5,9 @@ input,select{
 .container,h4{
     margin-left:20px;
 }
+
+.container{
+    margin-bottom: 10px;
+    outline-style: solid;
+    outline-width: thin;
+}

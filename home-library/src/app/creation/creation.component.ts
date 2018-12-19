@@ -35,6 +35,21 @@ export class CreationComponent{
         }
        
     }
+
+    changeListPostion(event){
+        alert('thereeee');
+        event.preventDefault();
+        const target = event.target;
+        const newPosition=target.querySelector('#newPosition').value;
+        const list_id=target.querySelector('#id_').value;
+        alert('there');
+        if(newPosition){
+            alert(newPosition);
+            this.Auth.changeListPosition(newPosition,list_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
 }
 
 
