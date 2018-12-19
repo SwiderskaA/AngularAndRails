@@ -36,6 +36,16 @@ export class CreationComponent{
        
     }
 
+    updateTableName(event){ 
+        event.preventDefault();
+        const target = event.target;
+        const id=target.querySelector('#table_id_update').value;
+        const newName=target.querySelector('#table_name_update').value;
+         this.Auth.updateTableName(id,newName).subscribe((res: Response) => {
+            const data= res.json();
+          });
+    }
+
     changeListPostion(event){
         event.preventDefault();
         const target = event.target;
@@ -83,6 +93,17 @@ export class CreationComponent{
         const card_id=target.querySelector('#card_id_archive').value;
         if(card_id){
             this.Auth.archiveCard(card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
+    copyCard(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#card_id_copy').value;
+        if(card_id){
+            this.Auth.copyCard(card_id).subscribe(data => {
                 //there is no feedback data
             });
         }

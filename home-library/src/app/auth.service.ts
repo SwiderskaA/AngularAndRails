@@ -128,7 +128,7 @@ export class AuthService {
         return this.http.post('http://localhost:3000/cards/'+card_id+'/archive',httpOptions);
      }
 
-     updateTableName(newName){
+     copyCard(card_id){   //not working ;()
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
@@ -137,8 +137,20 @@ export class AuthService {
             })
           };
 
-        return this.http.put('http://localhost:3000/tables/3' ,{
-        "name":"testowazmiana"
+        return this.http.post('http://localhost:3000/cards/'+card_id+'/copy',httpOptions);
+     }
+
+     updateTableName(id,newName){ //it works 
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.put('http://localhost:3000/tables/'+id ,{
+        "name":newName
         },httpOptions);
      }
     
