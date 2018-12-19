@@ -76,6 +76,17 @@ export class CreationComponent{
             });
         }
     }
+
+    archiveCard(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#card_id_archive').value;
+        if(card_id){
+            this.Auth.archiveCard(card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
 }
 
 
