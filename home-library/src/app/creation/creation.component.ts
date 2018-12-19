@@ -63,6 +63,30 @@ export class CreationComponent{
             });
         }
     }
+
+    changeCardPostion(event){
+        event.preventDefault();
+        const target = event.target;
+        const newPosition=target.querySelector('#card_new_position').value;
+        const card_id=target.querySelector('#card_id').value;
+        if(newPosition){
+            alert(newPosition);
+            this.Auth.changeCardPosition(newPosition,card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
+    archiveCard(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#card_id_archive').value;
+        if(card_id){
+            this.Auth.archiveCard(card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
 }
 
 

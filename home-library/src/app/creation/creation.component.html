@@ -43,4 +43,24 @@
         <button type="submit" class="btn btn-primary">Utwórz kartę</button>
       </form>
     </div>
+    <div class="container">
+        <form (submit)="changeCardPostion($event)">
+          <div class="form-group">
+            <label for="email">Podaj id karty</label>
+            <input type="email" class="form-control" id="card_id" placeholder="Enter card id">
+            <label for="email">Podaj nową pozycję karty</label>
+            <input type="email" class="form-control" id="card_new_position" placeholder="Enter new position">
+          </div>
+          <button type="submit" class="btn btn-primary">Zmień pozycję karty</button>
+        </form>
+      </div>
+      <div class="container">
+          <form (submit)="archiveCard($event)">
+            <div class="form-group">
+              <label for="email">Podaj id karty</label>
+              <input type="email" class="form-control" id="card_id_archive" placeholder="Enter card id">
+            </div>
+            <button type="submit" class="btn btn-primary">Zarchiwizuj kartę</button>
+          </form>
+        </div>
   
