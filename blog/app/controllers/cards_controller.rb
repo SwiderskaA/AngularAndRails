@@ -95,13 +95,17 @@ class CardsController < ApplicationController
   def copy
      card = Card.find(params[:card_id])
      cards = List.find(params[:list_id]).cards
+     @card  = card.deep_clone include: [:comments, :observations]
+     @card.position = cards.length
+     #clone_card.tasklist = card.tasklist.deep_clone include: [:tasks]
+     for tasklist in card.tasklist do
+        clone_tasklist = tasklist.deep_clone include: [:tasks]
+        @card.tasklist << clone_tasklist
+     end
      
-     @card = Card.create(name: card.name, description: card.description, list_id: params[:list_id], position: cards.length)
+     #@card = Card.create(name: card.name, description: card.description, list_id: params[:list_id], position: cards.length)
 
      if @card.save
-      if params[:position]
-        #todo
-      end
           render :show, status: :created, location: @card
       else
         render json: @card.errors, status: :unprocessable_entity
