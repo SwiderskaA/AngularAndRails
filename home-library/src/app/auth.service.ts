@@ -140,7 +140,7 @@ export class AuthService {
         return this.http.post('http://localhost:3000/cards/'+card_id+'/copy',httpOptions);
      }
 
-     updateTableName(id,newName){ //not working :( 
+     updateTableName(id,newName){ //it works 
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',

@@ -41,11 +41,9 @@ export class CreationComponent{
         const target = event.target;
         const id=target.querySelector('#table_id_update').value;
         const newName=target.querySelector('#table_name_update').value;
-         this.Auth.updateTableName(id,newName).subscribe(data => {
-            if(data){
-              // alert("data");
-             }
-        });
+         this.Auth.updateTableName(id,newName).subscribe((res: Response) => {
+            const data= res.json();
+          });
     }
 
     changeListPostion(event){
