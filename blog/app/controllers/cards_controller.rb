@@ -74,7 +74,7 @@ class CardsController < ApplicationController
 
     arr_ids.each_with_index do |id, index|
       card = Card.find(id)
-      card.position = index + 1
+      card.position = index
       card.save
     end
 
