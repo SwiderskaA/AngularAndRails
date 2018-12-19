@@ -63,4 +63,23 @@
             <button type="submit" class="btn btn-primary">Zarchiwizuj kartę</button>
           </form>
         </div>
-  
+        <div class="container">
+            <form (submit)="copyCard($event)">
+              <div class="form-group">
+                <label for="email">Podaj id karty</label>
+                <input type="email" class="form-control" id="card_id_copy" placeholder="Enter card id">
+              </div>
+              <button type="submit" class="btn btn-primary">Kopiuj kartę</button>
+            </form>
+          </div>
+    <div class="container">
+              <form (submit)="updateTableName($event)">
+                <div class="form-group">
+                  <label for="email">Wpisz id tablicy</label>
+                  <input type="email" class="form-control" id="table_id_update" placeholder="Enter table id">
+                  <label for="email">Wpisz nazwę tablicy</label>
+                  <input type="email" class="form-control" id="table_name_update" placeholder="Enter new name of table">
+                </div>
+                <button type="submit" class="btn btn-primary">Zmień nazwę tablicy</button>
+              </form>
+            </div>
