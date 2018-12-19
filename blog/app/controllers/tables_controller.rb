@@ -32,7 +32,7 @@ class TablesController < ApplicationController
   # PATCH/PUT /tables/1
   # PATCH/PUT /tables/1.json
   def update
-      @table = current_user.tables.where(id: params[:id])
+      #@table = current_user.tables.where(params[:id]).first
       if @table.update(table_params)
         History.create(table_id: @table.id, description: "User " + current_user.email + "updated table called " + @table.name)
         render :show, status: :ok, location: @table
@@ -62,7 +62,7 @@ class TablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def table_params
-      params.require(:table).permit(:name)
+      params.permit(:name)
     end
 
     def login_required
