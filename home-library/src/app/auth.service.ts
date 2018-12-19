@@ -46,7 +46,7 @@ export class AuthService {
         );
      }
 
-     createTable(tableName){
+     createTable(tableName){ //this works 
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
@@ -57,6 +57,20 @@ export class AuthService {
 
         return this.http.post('http://localhost:3000/tables',{
             "name":tableName
+        },httpOptions);
+     }
+
+     createList(list_name,table_id){  //this works 
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.post('http://localhost:3000/lists',{
+            "name":list_name,"table_id":table_id
         },httpOptions);
      }
 

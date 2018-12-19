@@ -22,6 +22,19 @@ export class CreationComponent{
              }
         });
     }
+
+    createNewList(event){
+        event.preventDefault();
+        const target = event.target;
+        const newName=target.querySelector('#newNameList').value;
+        if(newName){
+            this.Auth.createList(newName,2).subscribe(data => {
+                //there is no feedback data
+            });
+            alert('List created !');
+        }
+       
+    }
 }
 
 
