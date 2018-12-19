@@ -94,7 +94,7 @@ class CardsController < ApplicationController
 
   def copy
      card = Card.find(params[:card_id])
-     cards = List.find(params[:list_id]).cards
+     cards = List.find(card.list.id).cards
      @card  = card.deep_clone include: [:comments, :observations]
      @card.position = cards.length
      #clone_card.tasklist = card.tasklist.deep_clone include: [:tasks]
