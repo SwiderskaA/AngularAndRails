@@ -69,9 +69,8 @@ export class AuthService {
             })
           };
 
-        return this.http.put('http://localhost:3000/tables/5' ,{
-        "id":5,
-        "name":"aaa"
+        return this.http.put('http://localhost:3000/tables/3' ,{
+        "name":"testowazmiana"
         },httpOptions);
      }
     

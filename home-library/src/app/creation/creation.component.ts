@@ -16,7 +16,7 @@ export class CreationComponent{
         event.preventDefault();
         const target = event.target;
         const newName=target.querySelector('#newName').value;
-         this.Auth.updateTableName(newName).subscribe(data => {
+         this.Auth.createTable(newName).subscribe(data => {
             if(data){
               // alert("data");
              }
