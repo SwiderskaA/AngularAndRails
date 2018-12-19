@@ -124,4 +124,15 @@
                    <button type="submit" class="btn btn-primary">Dodaj task listę</button>
                </form>
              </div>
+             <div class="container">
+                <form (submit)="createTask($event)">
+                   <div class="form-group">
+                     <label for="email">Wpisz id task listy</label>
+                    <input type="email" class="form-control" id="tasklist_id" placeholder="Enter tasklist id">
+                    <label for="email">Wpisz nazwę tasku</label>
+                    <input type="email" class="form-control" id="task_name_" placeholder="Enter name of task ">
+                   </div>
+                     <button type="submit" class="btn btn-primary">Dodaj nowy task</button>
+                 </form>
+               </div>
    

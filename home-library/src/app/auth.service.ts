@@ -205,6 +205,20 @@ export class AuthService {
             "name":name,"card_id":card_id
             },httpOptions);
      }
+
+     createTask(name,tasklist_id){  
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.post('http://localhost:3000/tasks',{
+            "name":name,"tasklist_id":tasklist_id
+            },httpOptions);
+     }
     
     }
 

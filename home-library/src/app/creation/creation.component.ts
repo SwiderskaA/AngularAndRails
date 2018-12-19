@@ -156,6 +156,18 @@ export class CreationComponent{
         }
     }
 
+    createTask(event){
+        event.preventDefault();
+        const target = event.target;
+        const tasklist_id=target.querySelector('#tasklist_id').value;
+        const name=target.querySelector('#task_name_').value;
+        if(tasklist_id){
+            this.Auth.createTask(name,tasklist_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
     
 }
 
