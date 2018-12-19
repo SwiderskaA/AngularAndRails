@@ -1,17 +1,71 @@
 <br><br><br>
-<h4>Change your table name : </h4>
-<p>Choose current name of table</p>
-<div class="form-group">
-                <select class="form-control" id="sel1" style="width:200px;">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-</div>
-<p>Write in new name</p>
-<input>
-<br><br>
-<button>Submit</button>
-<br><br>
-<button>Delete the table </button>
+<div class="container">
+    <form (submit)="changeListPostion($event)">
+      <div class="form-group">
+        <label for="email">Podaj id listy</label>
+          <input type="email" class="form-control" id="id_" placeholder="">
+        <label for="email">Podaj nową pozycję listy</label>
+        <input type="email" class="form-control" id="newPosition" placeholder="">
+      </div>
+      <button type="submit" class="btn btn-primary">Zmień pozycję listy</button>
+    </form>
+  </div>
+  <div class="container">
+      <form (submit)="changeCardPostion($event)">
+        <div class="form-group">
+          <label for="email">Podaj id karty</label>
+          <input type="email" class="form-control" id="card_id" placeholder="">
+          <label for="email">Podaj nową pozycję karty</label>
+          <input type="email" class="form-control" id="card_new_position" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Zmień pozycję karty</button>
+      </form>
+    </div>
+    <div class="container">
+        <form (submit)="archiveCard($event)">
+          <div class="form-group">
+            <label for="email">Podaj id karty</label>
+            <input type="email" class="form-control" id="card_id_archive" placeholder="">
+          </div>
+          <button type="submit" class="btn btn-primary">Zarchiwizuj kartę</button>
+        </form>
+      </div>
+      <div class="container">
+          <form (submit)="copyCard($event)">
+            <div class="form-group">
+              <label for="email">Podaj id karty</label>
+              <input type="email" class="form-control" id="card_id_copy" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Kopiuj kartę</button>
+          </form>
+        </div>
+        <div class="container">
+            <form (submit)="updateTableName($event)">
+              <div class="form-group">
+                <label for="email">Wpisz id tablicy</label>
+                <input type="email" class="form-control" id="table_id_update" placeholder="">
+                <label for="email">Wpisz nazwę tablicy</label>
+                <input type="email" class="form-control" id="table_name_update" placeholder="">
+              </div>
+              <button type="submit" class="btn btn-primary">Zmień nazwę tablicy</button>
+            </form>
+          </div>
+          <div class="container">
+              <form (submit)="observeCard($event)">
+                <div class="form-group">
+                  <label for="email">Wpisz id karty</label>
+                  <input type="email" class="form-control" id="card_id_observe" placeholder="">
+    
+                </div>
+                <button type="submit" class="btn btn-primary">Obserwuj kartę</button>
+              </form>
+            </div>
+            <div class="container">
+                <form (submit)="deleteComment($event)">
+                   <div class="form-group">
+                     <label for="email">Wpisz id komentarza</label>
+                    <input type="email" class="form-control" id="comment_id" placeholder="">
+                   </div>
+                     <button type="submit" class="btn btn-primary">Usuń komentarz</button>
+                 </form>
+               </div>

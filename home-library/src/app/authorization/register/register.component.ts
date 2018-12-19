@@ -25,15 +25,15 @@ export class RegisterComponent{
       const passwordConfirmation=target.querySelector('#pswd2').value;
      // alert("You try to register user : " + username+ " with password " +password);
       //there should be executed service method of register !!! TO DO 
-      
+      if(password==passwordConfirmation){
       this.Auth.registerUser(username,password).subscribe(data => {
-        if(data){
-          alert(data);
-        }else{
-            alert("none");
-            //after rest response from rails here it is !!!!!!
-        }
+       
     });
+    alert("Konto utworzone !");
+   }else{
+       alert("Potwierdzenie hasła się nie zgadza !");
+   }
+
    }
 }
 

@@ -35,15 +35,15 @@ export class LoginComponent implements OnInit{
         const username=target.querySelector('#email').value;
         this.email=username; //pass input email into component variable -testing context 
         const password=target.querySelector('#pwd').value;
-        alert(username);
         console.log(username,password);
         this.Auth.getUserDetails(username,password).subscribe(data => {
             if(data){
               this.email=data['email'];
               this.token=data['authentication_token'];
-              alert("Your token is : " + this.token + " for email "+this.email);
+              alert("Zalogowano pomyślnie !");
+            //  alert("Your token is : " + this.token + " for email "+this.email);
             }else{
-                alert(data);
+              //  alert(data);
             }
         });
         this.newMessage(); //pass input variables by the service

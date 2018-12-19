@@ -5,23 +5,23 @@
             <ul class="nav navbar-nav" routerLinkActive="active">
                 <li class="nav-item">
                     <button class="btn navbar-btn glyphicon glyphicon-home btn-primary-outline btn-space" routerLink="table"></button></li>
+                <li *ngIf="message" class="nav-item">
+                        <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="content">Twoje tablice</button></li>
                 <li class="nav-item">
-                        <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="content">Content</button></li>
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="login">Zaloguj się</button></li>
                 <li class="nav-item">
-                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="login">Log in</button></li>
-                <li class="nav-item">
-                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="register">Register</button></li>
-                <li class="nav-item">
-                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="creation">Create table</button></li>
-                <li class="nav-item">
-                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="management">Management</button></li>
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="register">Rejestracja</button></li>
+                
+                <li *ngIf="message" class="nav-item">
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="creation">Tworzenie</button></li>
+                <li *ngIf="message" class="nav-item">
+                    <button class="btn navbar-btn btn-primary-outline btn-space" routerLink="management">Zarządzanie</button></li>
             </ul>
             <div class="plusright">
             <ul class="nav navbar-nav navbar-right">
                <li class="nav-item">
                            <p id="username">{{message}}</p></li>
-                <li class="nav-item">
-                  <button class="btn navbar-btn glyphicon glyphicon-plus btn-primary-outline btn-right" routerLink=""></button></li>
+               
                 </ul>
               </div>
         </div>

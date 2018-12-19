@@ -1,125 +1,56 @@
 <br><br><br>
-<h4>Create new table,new list</h4>
 
 <div class="container">
     <form (submit)="createNewTable($event)">
       <div class="form-group">
-        <label for="email">Input name of table : </label>
-        <input type="email" class="form-control" id="newName" placeholder="Enter table name ">
+        <label for="email">Wpisz nazwę tablicy</label>
+        <input type="email" class="form-control" id="newName" placeholder="">
       </div>
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary">Utwórz nową tablicę</button>
     </form>
   </div>
   <div class="container">
     <form (submit)="createNewList($event)">
       <div class="form-group">
-        <label for="email">Dodaj nową listę : </label>
-        <input type="email" class="form-control" id="newNameList" placeholder="Enter list name">
+        <label for="email">Wpisz nazwę listy</label>
+        <input type="email" class="form-control" id="newNameList" placeholder="">
+        <label for="email">Wpisz id tablicy nadrzędnej</label>
+        <input type="email" class="form-control" id="idTable" placeholder="">
       </div>
-      <button type="submit" class="btn btn-primary">Create new list</button>
-    </form>
-  </div>
-  <div class="container">
-    <form (submit)="changeListPostion($event)">
-      <div class="form-group">
-        <label for="email">Podaj id listy</label>
-          <input type="email" class="form-control" id="id_" placeholder="Enter id of list">
-        <label for="email">Zmień pozycję listy </label>
-        <input type="email" class="form-control" id="newPosition" placeholder="Enter new position">
-      </div>
-      <button type="submit" class="btn btn-primary">Zmień pozycję</button>
+      <button type="submit" class="btn btn-primary">Utwórz nową listę</button>
     </form>
   </div>
   <div class="container">
       <form (submit)="createCard($event)">
         <div class="form-group">
           <label for="email">Podaj id listy</label>
-            <input type="email" class="form-control" id="id_card" placeholder="Enter id of list">
+            <input type="email" class="form-control" id="id_card" placeholder="">
           <label for="email">Podaj nazwę karty</label>
-          <input type="email" class="form-control" id="name_card" placeholder="Enter card name">
+          <input type="email" class="form-control" id="name_card" placeholder="">
           <label for="email">Podaj opis dla karty</label>
-          <input type="email" class="form-control" id="description_card" placeholder="Enter card description">
+          <input type="email" class="form-control" id="description_card" placeholder="">
         </div>
         <button type="submit" class="btn btn-primary">Utwórz kartę</button>
       </form>
     </div>
-    <div class="container">
-        <form (submit)="changeCardPostion($event)">
-          <div class="form-group">
-            <label for="email">Podaj id karty</label>
-            <input type="email" class="form-control" id="card_id" placeholder="Enter card id">
-            <label for="email">Podaj nową pozycję karty</label>
-            <input type="email" class="form-control" id="card_new_position" placeholder="Enter new position">
-          </div>
-          <button type="submit" class="btn btn-primary">Zmień pozycję karty</button>
-        </form>
-      </div>
-      <div class="container">
-          <form (submit)="archiveCard($event)">
-            <div class="form-group">
-              <label for="email">Podaj id karty</label>
-              <input type="email" class="form-control" id="card_id_archive" placeholder="Enter card id">
-            </div>
-            <button type="submit" class="btn btn-primary">Zarchiwizuj kartę</button>
-          </form>
-        </div>
-        <div class="container">
-            <form (submit)="copyCard($event)">
-              <div class="form-group">
-                <label for="email">Podaj id karty</label>
-                <input type="email" class="form-control" id="card_id_copy" placeholder="Enter card id">
-              </div>
-              <button type="submit" class="btn btn-primary">Kopiuj kartę</button>
-            </form>
-          </div>
-    <div class="container">
-              <form (submit)="updateTableName($event)">
-                <div class="form-group">
-                  <label for="email">Wpisz id tablicy</label>
-                  <input type="email" class="form-control" id="table_id_update" placeholder="Enter table id">
-                  <label for="email">Wpisz nazwę tablicy</label>
-                  <input type="email" class="form-control" id="table_name_update" placeholder="Enter new name of table">
-                </div>
-                <button type="submit" class="btn btn-primary">Zmień nazwę tablicy</button>
-              </form>
-            </div>
-  <div class="container">
-                <form (submit)="observeCard($event)">
-                  <div class="form-group">
-                    <label for="email">Wpisz id karty</label>
-                    <input type="email" class="form-control" id="card_id_observe" placeholder="Enter card id">
-      
-                  </div>
-                  <button type="submit" class="btn btn-primary">Obserwuj kartę</button>
-                </form>
-              </div>
    <div class="container">
          <form (submit)="addComment($event)">
             <div class="form-group">
               <label for="email">Wpisz id karty</label>
-             <input type="email" class="form-control" id="card_id_comment" placeholder="Enter card id">
+             <input type="email" class="form-control" id="card_id_comment" placeholder="">
              <label for="email">Wpisz komentarz</label>
-             <input type="email" class="form-control" id="comment" placeholder="Enter comment">
+             <input type="email" class="form-control" id="comment" placeholder="">
             </div>
               <button type="submit" class="btn btn-primary">Dodaj komentarz</button>
           </form>
         </div>
-        <div class="container">
-            <form (submit)="deleteComment($event)">
-               <div class="form-group">
-                 <label for="email">Wpisz id komentarza</label>
-                <input type="email" class="form-control" id="comment_id" placeholder="Enter comment id">
-               </div>
-                 <button type="submit" class="btn btn-primary">Usuń komentarz</button>
-             </form>
-           </div>
            <div class="container">
               <form (submit)="createTaskList($event)">
                  <div class="form-group">
                    <label for="email">Wpisz id karty</label>
-                  <input type="email" class="form-control" id="task_id" placeholder="Enter card id">
+                  <input type="email" class="form-control" id="task_id" placeholder="">
                   <label for="email">Wpisz nazwę task listy</label>
-                  <input type="email" class="form-control" id="task_name" placeholder="Enter name of task list">
+                  <input type="email" class="form-control" id="task_name" placeholder="">
                  </div>
                    <button type="submit" class="btn btn-primary">Dodaj task listę</button>
                </form>
@@ -128,9 +59,9 @@
                 <form (submit)="createTask($event)">
                    <div class="form-group">
                      <label for="email">Wpisz id task listy</label>
-                    <input type="email" class="form-control" id="tasklist_id" placeholder="Enter tasklist id">
+                    <input type="email" class="form-control" id="tasklist_id" placeholder="">
                     <label for="email">Wpisz nazwę tasku</label>
-                    <input type="email" class="form-control" id="task_name_" placeholder="Enter name of task ">
+                    <input type="email" class="form-control" id="task_name_" placeholder="">
                    </div>
                      <button type="submit" class="btn btn-primary">Dodaj nowy task</button>
                  </form>

@@ -1,6 +1,15 @@
-button{
-    width:200px;
-    border-radius: 10px;
+input,select{
+    width:300px;
+}
+
+.container,h4{
+    margin-left:20px;
+}
+
+.container{
+    margin-bottom: 10px;
+    outline-style: solid;
+    outline-width: thin;
 }
 
 

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class DataExchangeService {
 
-  private messageSource = new BehaviorSubject('Guest');
+  private messageSource = new BehaviorSubject(''); //there was initial message for example 'guest'
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }

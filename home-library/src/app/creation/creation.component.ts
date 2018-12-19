@@ -27,8 +27,9 @@ export class CreationComponent{
         event.preventDefault();
         const target = event.target;
         const newName=target.querySelector('#newNameList').value;
+        const id=target.querySelector('#idTable').value;
         if(newName){
-            this.Auth.createList(newName,2).subscribe(data => {
+            this.Auth.createList(newName,id).subscribe(data => {
                 //there is no feedback data
             });
             alert('List created !');
@@ -36,28 +37,6 @@ export class CreationComponent{
        
     }
 
-    updateTableName(event){ 
-        event.preventDefault();
-        const target = event.target;
-        const id=target.querySelector('#table_id_update').value;
-        const newName=target.querySelector('#table_name_update').value;
-         this.Auth.updateTableName(id,newName).subscribe((res: Response) => {
-            const data= res.json();
-          });
-    }
-
-    changeListPostion(event){
-        event.preventDefault();
-        const target = event.target;
-        const newPosition=target.querySelector('#newPosition').value;
-        const list_id=target.querySelector('#id_').value;
-        if(newPosition){
-            alert(newPosition);
-            this.Auth.changeListPosition(newPosition,list_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
 
     createCard(event){
         alert('thereeee');
@@ -74,51 +53,7 @@ export class CreationComponent{
         }
     }
 
-    changeCardPostion(event){
-        event.preventDefault();
-        const target = event.target;
-        const newPosition=target.querySelector('#card_new_position').value;
-        const card_id=target.querySelector('#card_id').value;
-        if(newPosition){
-            alert(newPosition);
-            this.Auth.changeCardPosition(newPosition,card_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
 
-    archiveCard(event){
-        event.preventDefault();
-        const target = event.target;
-        const card_id=target.querySelector('#card_id_archive').value;
-        if(card_id){
-            this.Auth.archiveCard(card_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
-
-    copyCard(event){
-        event.preventDefault();
-        const target = event.target;
-        const card_id=target.querySelector('#card_id_copy').value;
-        if(card_id){
-            this.Auth.copyCard(card_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
-
-    observeCard(event){
-        event.preventDefault();
-        const target = event.target;
-        const card_id=target.querySelector('#card_id_observe').value;
-        if(card_id){
-            this.Auth.observeCard(card_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
 
     addComment(event){
         event.preventDefault();
@@ -127,18 +62,6 @@ export class CreationComponent{
         const comment=target.querySelector('#comment').value;
         if(card_id){
             this.Auth.addComment(comment,card_id).subscribe(data => {
-                //there is no feedback data
-            });
-        }
-    }
-
-
-    deleteComment(event){
-        event.preventDefault();
-        const target = event.target;
-        const card_id=target.querySelector('#comment_id').value;
-        if(card_id){
-            this.Auth.deleteComment(card_id).subscribe(data => {
                 //there is no feedback data
             });
         }
