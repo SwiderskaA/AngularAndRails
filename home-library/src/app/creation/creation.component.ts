@@ -131,6 +131,18 @@ export class CreationComponent{
             });
         }
     }
+
+
+    deleteComment(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#comment_id').value;
+        if(card_id){
+            this.Auth.deleteComment(card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
 }
 
 

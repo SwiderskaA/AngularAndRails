@@ -104,3 +104,13 @@
               <button type="submit" class="btn btn-primary">Dodaj komentarz</button>
           </form>
         </div>
+        <div class="container">
+            <form (submit)="deleteComment($event)">
+               <div class="form-group">
+                 <label for="email">Wpisz id komentarza</label>
+                <input type="email" class="form-control" id="comment_id" placeholder="Enter comment id">
+               </div>
+                 <button type="submit" class="btn btn-primary">Usuń komentarz</button>
+             </form>
+           </div>
+   
