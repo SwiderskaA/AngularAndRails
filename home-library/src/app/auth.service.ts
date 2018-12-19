@@ -88,6 +88,20 @@ export class AuthService {
         },httpOptions);
      }
 
+     createCard(id,name,description){  
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.post('http://localhost:3000/cards',{
+            "list_id":id,"name":name,"description":description
+        },httpOptions);
+     }
+
      updateTableName(newName){
         const httpOptions = {
             headers: new HttpHeaders({

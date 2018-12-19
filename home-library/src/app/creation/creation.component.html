@@ -30,4 +30,17 @@
       <button type="submit" class="btn btn-primary">Zmień pozycję</button>
     </form>
   </div>
+  <div class="container">
+      <form (submit)="createCard($event)">
+        <div class="form-group">
+          <label for="email">Podaj id listy</label>
+            <input type="email" class="form-control" id="id_card" placeholder="Enter id of list">
+          <label for="email">Podaj nazwę karty</label>
+          <input type="email" class="form-control" id="name_card" placeholder="Enter card name">
+          <label for="email">Podaj opis dla karty</label>
+          <input type="email" class="form-control" id="description_card" placeholder="Enter card description">
+        </div>
+        <button type="submit" class="btn btn-primary">Utwórz kartę</button>
+      </form>
+    </div>
   

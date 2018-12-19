@@ -37,15 +37,28 @@ export class CreationComponent{
     }
 
     changeListPostion(event){
-        alert('thereeee');
         event.preventDefault();
         const target = event.target;
         const newPosition=target.querySelector('#newPosition').value;
         const list_id=target.querySelector('#id_').value;
-        alert('there');
         if(newPosition){
             alert(newPosition);
             this.Auth.changeListPosition(newPosition,list_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
+    createCard(event){
+        alert('thereeee');
+        event.preventDefault();
+        const target = event.target;
+        const list_id=target.querySelector('#id_card').value;
+        const name=target.querySelector('#name_card').value;
+        const description=target.querySelector('#description_card').value;
+        if(list_id){
+            alert(list_id);
+            this.Auth.createCard(list_id,name,description).subscribe(data => {
                 //there is no feedback data
             });
         }
