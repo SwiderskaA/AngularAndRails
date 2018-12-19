@@ -143,6 +143,20 @@ export class CreationComponent{
             });
         }
     }
+
+    createTaskList(event){
+        event.preventDefault();
+        const target = event.target;
+        const task_id=target.querySelector('#task_id').value;
+        const name=target.querySelector('#task_name').value;
+        if(task_id){
+            this.Auth.createTaskList(name,task_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
+    
 }
 
 

@@ -113,4 +113,15 @@
                  <button type="submit" class="btn btn-primary">Usuń komentarz</button>
              </form>
            </div>
+           <div class="container">
+              <form (submit)="createTaskList($event)">
+                 <div class="form-group">
+                   <label for="email">Wpisz id karty</label>
+                  <input type="email" class="form-control" id="task_id" placeholder="Enter card id">
+                  <label for="email">Wpisz nazwę task listy</label>
+                  <input type="email" class="form-control" id="task_name" placeholder="Enter name of task list">
+                 </div>
+                   <button type="submit" class="btn btn-primary">Dodaj task listę</button>
+               </form>
+             </div>
    
