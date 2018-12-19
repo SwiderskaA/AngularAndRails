@@ -128,7 +128,7 @@ export class AuthService {
         return this.http.post('http://localhost:3000/cards/'+card_id+'/archive',httpOptions);
      }
 
-     copyCard(card_id){   //not working ;()
+     copyCard(card_id){   //it works
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
@@ -151,6 +151,32 @@ export class AuthService {
 
         return this.http.put('http://localhost:3000/tables/'+id ,{
         "name":newName
+        },httpOptions);
+     }
+
+     observeCard(id){  //not working 
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.post('http://localhost:3000/cards/'+id+'/observe' ,httpOptions);
+     }
+
+     addComment(name,id){  
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'X-User-Email': 'test12345@op.pl',
+              'X-User-Token': '6aA-wdxX-Fzsu3Rnj5Yt'
+            })
+          };
+
+        return this.http.post('http://localhost:3000/comments',{
+        "name":name,"card_id":id
         },httpOptions);
      }
     

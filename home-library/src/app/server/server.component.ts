@@ -29,15 +29,18 @@ export class ServerComponent{
 
     ngOnInit() {
         this.data.currentMessage.subscribe(message => this.message = message);
-        this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe(data => {
+        // this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe(data => {
             
-            if(data){
-              this.myContent = data;
-              alert(data);
-            }else{
-                alert(data);
-            }
-        });
+        //     if(data){
+        //       this.myContent = data;
+        //       alert(data);
+        //     }else{
+        //         alert(data);
+        //     }
+        // });
+        this.Auth.getContentForUser('test12345@op.pl',this.token).subscribe((res: Response) => {
+            this.myContent= res.json();
+          });
         
         
        //here i cant read value after logging in ! 

@@ -108,6 +108,29 @@ export class CreationComponent{
             });
         }
     }
+
+    observeCard(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#card_id_observe').value;
+        if(card_id){
+            this.Auth.observeCard(card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
+
+    addComment(event){
+        event.preventDefault();
+        const target = event.target;
+        const card_id=target.querySelector('#card_id_comment').value;
+        const comment=target.querySelector('#comment').value;
+        if(card_id){
+            this.Auth.addComment(comment,card_id).subscribe(data => {
+                //there is no feedback data
+            });
+        }
+    }
 }
 
 
